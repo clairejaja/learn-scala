@@ -1,0 +1,258 @@
+lecture 1.1 programming paradigms
+
+main paradigms: imperative, functional, logic
+orthogonal: object-oriented
+
+imperative: modifying mutable variables, using assignments, control structures (if-then-else, loops, break, continue, return)
+instruction sequences for a Von Neumann computer
+mutable variables ~~ memory cells
+variable dereferences ~~ load instructions
+variable assignments ~~ store instructions
+control structures ~~ jumps
+scaling up: how to avoid conceptualizing programs word by word
+need other techniques for defining high-level abstractions such as collections, polynomials, geometric shapes, strings, docs, etc
+theories without mutation
+concentrate on defining theories for operators expressed as functions
+avoid mutations
+have powerful ways to abstract and compose functions
+
+functional programming
+restricted sense - programming w/o mutable variables, assignments, loops, imperative control structures
+wider sense - focusing on functions
+in particular, functions can be values that are produced, consumed, composed
+functions are first-class citizens
+can be defined anywhere, including inside other functions
+can be passed as parameters, returned as results
+as for other values, exists set of operators to compose functions
+
+1.2 elements of programming
+
+
+every non-trivial programming lang provides:
+primitive expressions representing simplest elements
+ways to combine expressions
+ways to abstract expressions (name)
+
+function parameters come with their type
+def power(x: Double, y: Int): Double = ....
+if return type given, follows parameter list
+same as Java but w/ caps
+
+expression evaluation - substitution model
+reduce an expression to a value
+formalized in lambda-calculus
+can be applied to all expressions as long as they have no side effects
+
+termination
+does every expressions reduce to a value (in a finite number of steps)?
+no
+def loop: Int = loop
+
+call-by-value vs. call-by-name
+both reduce to same final values as long as reduced expression consists of pure functions and both evaluations terminate
+call-by-value advantage - evals every fxn argument only once
+call-by-name advantage - fxn argument not evaluated if corresponding aprameter is unused in the eval of fxn body
+
+1.3 evaluation strategies and termination
+
+what is termination not guaranteed?
+if CBV eval of an expression e terminates, than CBN eval of e terminates too
+other direction not true
+
+def first(x: Int, y: Int) = x
+
+first(1,loop)
+CBN -> 1
+CBV -> tries to reduce loop infinitely
+
+Scala normally uses call-by-value
+but if type of fxn paramter starts w/ => it uses call by name
+ex.
+def constOne(x: Int, y: => Int) = 1
+
+constOne(1+2,loop)
+-> constOne(3,loop)
+-> 1
+
+constOne(loop,1+2)
+-> constOne(loop->loop, 1+2)
+stuck in loop
+
+1.4 Conditionals and Value Definitions
+
+to expression choosing between two alternatives, cond expression if-else - looks like Java but used for expressions not statements
+ex.
+def abs(x: Int) = if (x >= 0) x else -x
+
+x >= 0 is predicate of type Boolean
+
+Boolean expressions b can be composed of
+true false // Constants
+!b // Negation
+b && b // conjunction
+b || b // disjunction
+same as Java
+
+reduction rules for Boolean expressions (note that && and || do not always need their right operand to be evaluated)
+
+formulate rewrite rules for if-else
+if (b) e1 else e2
+-> if (true) e1 else e2 -> e1
+-> if (false) e1 else e2 -> e2
+
+fxn parameters can be passed by value or name
+same distinction applies to definitions
+def form is "b-name"
+also val which is "by-value"
+val x = 2
+val y = square(x)
+right hand side of val def evaluated at point of definition itself
+afterwars, name refers to value
+y above refers to 4 not square(2)
+difference apparent when right hand side doesn't terminate
+def x = loop
+is OK
+val x = loop
+will lead to infinite loop
+
+write fxns and and or such that for all argument expressions x and y
+and(x,y) == x && y
+or(x,y) == x || y
+
+def and(x:Boolean, y: =>Boolean) = if (!x) false else y
+
+def or(x:Boolean, y: =>Boolean) = if (x) true else y
+
+1.5 Example: square roots with Newton's method
+
+define function
+
+/** Calculates the square root of a parameter x */
+def sqrt(x: Double): Double = 
+
+
+classical way - successive approximations using Newton's method
+
+to compute sqrt(x):
+start w/ initial estimate y (pick y = 1)
+repeatedly improve estimate by taking mean of y and x/y
+
+ex. x = 2
+estimate 1 -> 2/1 = 2 -> mean 1.5
+1.5 -> 2/1.5 = 1.333 -> mean 1.4167
+1.4167 -> 2/1.4167 = 1.4118 -> mean 1.4142
+
+first define fxn which computes one iteration step
+
+def sqrtIter(guess: Double, x: Double): Double =
+  if (isGoodEnough(guess,x)) guess
+  else sqrtIter(improve(guess,x),x)
+
+note that is recursive - right hand side calls itself
+recursive fxns need explicit return type in Scala
+non-recursive fxns, return type is optional (but encouraged)
+
+def isGoodEnough(guess: Double, x: Double) =
+  abs(guess * guess - x) < 0.001
+
+def improve(guess: Double, x:Double) =
+  (guess+x / guess) / 2
+
+def sqrt(x: Double) = sqrtIter(1.0,x)
+
+sqrt(2)
+sqrt(4)
+
+isGoodEnough test is not very precise for small numbers, can lead to nontermination for large numbers - why?
+
+because of squaring guess - will run out of storage space?
+
+define different version of isGoodEnough that doesn't have this problem
+
+def isGoodEnough(guess: Double, x: Double) =
+  abs(guess - improve(guess,x)) < 0.001
+
+test w/ very small and large numbers
+
+
+1.6 blocks and lexical scope
+good functional programming style to split up task into many small functions
+don't want user to access sub-functions directly
+can achieve this and avoid "name-space pollution" by putting auxiliary functions inside sqrt
+
+block - delimited by braces
+contains a sequence of definitions or expressions
+last element of block is expression that defines its value
+return expression can be preceded by auxiliary definitions
+blocks are themselves expressions - can appear anywhere an expression can
+
+definitions inside block only visible within block
+definitions outside block visible only if not shadowed by definition inside block
+
+q: what is value of result in following program?
+val x = 0
+def f(y: Int) = y + 1
+val result = {
+  val x = f(3)
+  x * x
+} + x
+
+a: 16
+
+can simplify sqrt by eliminating redundant occurrences of x parameter
+
+semicolons - in Scala, are optional in most cases
+if there are more than one statements on a line, need to be separated by semicolons
+val y = x + 1; y * y 
+
+one issue - how to write expressions that span several lines
+two ways to overcome - write expression in parentheses b/c semicolons never inserted inside
+or - write operator on first line so compiler knows not yet finished
+
+
+1.7 tail recursion
+
+simple rule - evalute a fxn application
+by evaluating expressions resulting in values
+replacing application w/ body of fxn while replacing parameters
+can be formalized as rewriting of program itself
+gcd - greatest common divisor
+def gcd(a: Int, b: Int): Int =
+  if (b == 0) a else gcd (b, a % b)
+
+gcd(14,21)
+-> if (21 == 0) 14 else gcd (21, 14 % 21)
+-> if (false) 14 else gcd (21, 14 % 21)
+-> gcd (21, 14 % 21)
+-> gcd (21, 14)
+continues until
+7
+
+def factorial(n: Int): Int =
+  if (n == 0) 1 else n * factorial(n-1)
+
+difference between these two recursions
+for gcd, replacing with new calls to gcd
+for factorial, adding as goes
+
+if fxn calls itself as last action, fxns stack frame can be reused - tail recursion (= iterative process!)
+
+so gcd is tail recursion
+but factorial is not because still need to hold onto value to 
+
+in Scala, only directly recursive calls to current fxn are optimized
+one can require fxn tail-recursive using @tailrec annotation
+
+design tail-recursive version of factorial
+
+mine:
+def factorial(n: Int, x: Int): Int =
+  if (n == 0) x else factorial(n-1,n*x)
+
+class:
+def factorial(n: Int): Int = {
+  def loop(acc: Int, n: Int): Int =
+    if (n==0) acc
+    else loop(acc*n, n-1)
+  loop(1,n)
+}
