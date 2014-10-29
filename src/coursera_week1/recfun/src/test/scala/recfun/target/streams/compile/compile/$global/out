@@ -1,0 +1,97 @@
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mInitial source changes: [0m
+[0m[[0mdebug[0m] [0m	removed:Set()[0m
+[0m[[0mdebug[0m] [0m	added: Set(/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala, /media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala, /media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala)[0m
+[0m[[0mdebug[0m] [0m	modified: Set()[0m
+[0m[[0mdebug[0m] [0mRemoved products: Set()[0m
+[0m[[0mdebug[0m] [0mModified external sources: Set()[0m
+[0m[[0mdebug[0m] [0mModified binary dependencies: Set()[0m
+[0m[[0mdebug[0m] [0mInitial directly invalidated sources: Set(/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala, /media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala, /media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala)[0m
+[0m[[0mdebug[0m] [0m[0m
+[0m[[0mdebug[0m] [0mSources indirectly invalidated by:[0m
+[0m[[0mdebug[0m] [0m	product: Set()[0m
+[0m[[0mdebug[0m] [0m	binary dep: Set()[0m
+[0m[[0mdebug[0m] [0m	external source: Set()[0m
+[0m[[0mdebug[0m] [0mAll initially invalidated sources: Set(/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala, /media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala, /media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala)[0m
+[0m[[0mdebug[0m] [0mRecompiling all 3 sources: invalidated sources (3) exceeded 50.0% of all sources[0m
+[0m[[0minfo[0m] [0mCompiling 3 Scala sources to /media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/target/scala-2.9.2/classes...[0m
+[0m[[0mdebug[0m] [0mRunning cached compiler abfe0b1, interfacing (CompilerInterface) with Scala compiler version 2.9.2[0m
+[0m[[0mdebug[0m] [0mCalling Scala compiler with arguments  (CompilerInterface):[0m
+[0m[[0mdebug[0m] [0m	-d[0m
+[0m[[0mdebug[0m] [0m	/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/target/scala-2.9.2/classes[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/resources.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rt.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jsse.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jce.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/charsets.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/rhino.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/lib/jfr.jar:/usr/lib/jvm/java-7-openjdk-amd64/jre/classes:/home/claire/.sbt/boot/scala-2.9.2/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/target/scala-2.9.2/classes[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala:3: object scalatest is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.scalatest.FunSuite[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala:5: object junit is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.junit.runner.RunWith[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala:6: object scalatest is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.scalatest.junit.JUnitRunner[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala:10: not found: value Main[0m
+[0m[[31merror[0m] [0m  import Main.balance[0m
+[0m[[31merror[0m] [0m         ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala:12: not found: value test[0m
+[0m[[31merror[0m] [0m  test("balance: '(if (zero? x) max (/ 1 x))' is balanced") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala:16: not found: value test[0m
+[0m[[31merror[0m] [0m  test("balance: 'I told him ...' is balanced") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala:20: not found: value test[0m
+[0m[[31merror[0m] [0m  test("balance: ':-)' is unbalanced") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/BalanceSuite.scala:24: not found: value test[0m
+[0m[[31merror[0m] [0m  test("balance: counting is not enough") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala:3: object scalatest is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.scalatest.FunSuite[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala:5: object junit is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.junit.runner.RunWith[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala:6: object scalatest is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.scalatest.junit.JUnitRunner[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala:10: not found: value Main[0m
+[0m[[31merror[0m] [0m  import Main.countChange[0m
+[0m[[31merror[0m] [0m         ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala:11: not found: value test[0m
+[0m[[31merror[0m] [0m  test("countChange: example given in instructions") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala:15: not found: value test[0m
+[0m[[31merror[0m] [0m  test("countChange: sorted CHF") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala:19: not found: value test[0m
+[0m[[31merror[0m] [0m  test("countChange: no pennies") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/CountChangeSuite.scala:23: not found: value test[0m
+[0m[[31merror[0m] [0m  test("countChange: unsorted CHF") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala:3: object scalatest is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.scalatest.FunSuite[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala:5: object junit is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.junit.runner.RunWith[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala:6: object scalatest is not a member of package org[0m
+[0m[[31merror[0m] [0mimport org.scalatest.junit.JUnitRunner[0m
+[0m[[31merror[0m] [0m           ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala:10: not found: value Main[0m
+[0m[[31merror[0m] [0m  import Main.pascal[0m
+[0m[[31merror[0m] [0m         ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala:11: not found: value test[0m
+[0m[[31merror[0m] [0m  test("pascal: col=0,row=2") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala:15: not found: value test[0m
+[0m[[31merror[0m] [0m  test("pascal: col=1,row=2") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m/media/sf_Linux_Mint_17/learn-scala/src/coursera_week1/recfun/src/test/scala/recfun/PascalSuite.scala:19: not found: value test[0m
+[0m[[31merror[0m] [0m  test("pascal: col=1,row=3") {[0m
+[0m[[31merror[0m] [0m  ^[0m
+[0m[[31merror[0m] [0m23 errors found[0m
+[0m[[0mdebug[0m] [0mCompilation failed (CompilerInterface)[0m
+[0m[[31merror[0m] [0m(compile:[31mcompile[0m) Compilation failed[0m
