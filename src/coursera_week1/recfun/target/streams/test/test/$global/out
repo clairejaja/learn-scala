@@ -1,0 +1,3 @@
+[0m[[0mdebug[0m] [0mRunning Test recfun.CountChangeSuite : subclass(false, org.scalatest.Suite) with arguments [0m
+[0m[[0mdebug[0m] [0mRunning Test recfun.PascalSuite : subclass(false, org.scalatest.Suite) with arguments [0m
+[0m[[0mdebug[0m] [0mRunning Test recfun.BalanceSuite : subclass(false, org.scalatest.Suite) with arguments [0m
