@@ -256,3 +256,102 @@ def factorial(n: Int): Int = {
     else loop(acc*n, n-1)
   loop(1,n)
 }
+
+2.1 higher-order functions
+
+function can be passed as parameter and returned as result
+
+higher order function - take other fxns as parameters or return as results
+
+take sum of integers between a and b
+
+def sumInts(a: Int, b: Int): Int =
+  if (a > b) 0 else a + sumInts(a+1,b)
+
+take sum of cubes of all integers between a and b
+
+def cube(x: Int): Int = x*x*x
+
+def sumCubes(a: Int, b: Int): Int =
+  if (a > b) 0 else cube(a) + sumCubes(a+1,b)
+
+take sum of factorials of all integers between a and b
+
+...
+
+special cases of sum of functions
+
+def sum(f: Int => Int, a: Int, b: Int): Int =
+  if (a > b) 0
+  else f(a) + sum(f, a+1, b)
+
+def sumInts(a:Int, b:Int) = sum(id,a,b)
+def sumCubes(a: Int, b:Int) = sum(cube,a,b)
+
+
+function types
+type A => B is type of fxn that takes argument type A, returns result type B
+
+passing fxns as parameters leads to creation of many small fxns
+
+strings - literals
+analogously, literal fxns aka anonymous functions
+
+(x: Int) => x*x*x
+
+here (x:Int) is parameter, x*x*x is body
+type of paramter can be omitted if can be inferred by context
+
+(x1: T1,...,xn: Tn) => E
+
+def f(x1: T1,...xn: Tn) = E; f
+
+syntactic sugar
+
+def sumCubes(a: Int, b: Int) = sum(x=>x*x*x,a,b)
+
+sum fxn uses linear recursion, write tail-recursive version
+
+def sum(f: Int => Int, a:Int, b:Int): Int = {
+  def loop(a: Int, acc: Int): Int = {
+    if (a > b) acc
+    else loop (a+1,acc+f(a))
+  }
+  loop(a,0)
+}
+
+2.2 currying
+
+rewrite sum fxn
+
+def sum(f: Int=> Int): (Int,Int) => Int = {
+  def sumF(a:Int, b:Int): Int =
+    if (a>b) 0
+    else f(a) + sumF(a+1,b)
+  sumF
+}
+
+fxn that returns another fxn
+
+def sumInts = sum(x=>x)
+def sumCubes = sum(x=>x*x*x*)
+can we avoid middleman (sumInts,sumCubes,etc)
+sum(cube)(1,10)
+
+= (sum(cube))(1,10)
+
+def fxns that return fxns is so useful - special syntax in scala
+
+def sum(f: Int => Int)(a: Int, b: Int): Int =
+  if (a > b) 0 else f(a) + sum(f)(a+1,b)
+
+given
+def sum(f: Int => Int)(a:Int,b:Int): Int=...
+
+what is type of sum?
+(Int => Int) => (Int, Int) => Int
+
+functional types associate to the right
+Int => Int => Int
+equivalent to
+Int => (Int => Int)

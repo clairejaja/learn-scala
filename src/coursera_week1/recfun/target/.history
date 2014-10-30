@@ -4,3 +4,4 @@ test
 scala-version
 test
 :q
+exit
