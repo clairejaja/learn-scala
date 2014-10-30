@@ -33,25 +33,18 @@ object Main {
         else if (chars.head == ')' && x <= 0) false
         else countParentheses(chars.tail,x)
 
-    countParentheses(chars:List[Char],0)
+    countParentheses(chars,0)
   }
 
   /**
    * Exercise 3
    */
   def countChange(money: Int, coins: List[Int]): Int =  {
-
-    def loop(money: Int, coins: List[Int], acc: Int): Int =
-      if (coins.isEmpty) 0
-      else if (money == 0) 0
-      else { // coins exist, money > 0
-        // filter for coins less than money
-        def smallerCoins = coins.filter(x => x < money)
-        if (coins.contains(money)) acc+1+smallerCoins.map(x => loop(money-x,coins,acc)).sum
-        else acc+smallerCoins.map(x => loop(money-x,coins,acc)).sum
-        //acc + coins.filter(x => x < money).map(y => loop(money-y,coins,acc)).sum
-      }
-
-    loop(money,coins,0)
+    if (money == 0) 1 // change made!
+    else if (money < 0) 0 // change not made
+    else if (coins.isEmpty) 0 // no coins to make change
+    else {
+      countChange(money,coins.tail) + countChange(money-coins.head,coins)
+    }
   }
 }

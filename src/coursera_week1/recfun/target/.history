@@ -1,3 +1,6 @@
 test
 run
 test
+scala-version
+test
+:q
